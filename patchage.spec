@@ -1,8 +1,8 @@
 Name:		patchage
 Version:	0.4.4
-Release:	%mkrel 1
+Release:	%mkrel 2
 Summary:	A modular patch bay for audio and MIDI systems
-License:	GPLv2
+License:	GPLv2+
 Group:		Sound
 Url:		http://drobilla.net/software/patchage/
 Source0:	http://download.drobilla.net/%{name}-%{version}.tar.bz2
