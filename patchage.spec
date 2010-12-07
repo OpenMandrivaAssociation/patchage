@@ -1,6 +1,6 @@
 Name:		patchage
 Version:	0.4.4
-Release:	%mkrel 2
+Release:	%mkrel 3
 Summary:	A modular patch bay for audio and MIDI systems
 License:	GPLv2+
 Group:		Sound
