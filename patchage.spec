@@ -35,8 +35,7 @@ Jack, Lash, and Alsa.
     --libdir=%{_libdir} \
     --configdir=%{_sysconfdir} \
     --includedir=%{_includedir} \
-    --mandir=%{_mandir} \
-    --htmldir=%{_defaultdocdir}
+    --mandir=%{_mandir}
 
 ./waf build
 
