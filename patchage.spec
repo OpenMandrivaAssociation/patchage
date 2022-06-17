@@ -10,8 +10,8 @@ BuildRoot:  %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 BuildRequires:  waf
 BuildRequires:  desktop-file-utils
-BuildRequires:  flowcanvas-devel >= 0.5.1
-#BuildRequires:  libglademm2.4-devel >= 2.6.0
+#BuildRequires:  flowcanvas-devel >= 0.5.1
+BuildRequires:  libglademm2.4-devel >= 2.6.0
 #BuildRequires:  raul-devel >= 0.7.0
 BuildRequires:  jackit-devel >= 0.107.0
 BuildRequires:  libalsa-devel
