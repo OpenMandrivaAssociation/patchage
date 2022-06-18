@@ -48,7 +48,7 @@ rm -rf %{buildroot}
 
 %files
 %defattr(-,root,root,-)
-%doc AUTHORS ChangeLog README
+%doc AUTHORS
 %{_mandir}/man1/%{name}.1.*
 %{_bindir}/%{name}
 %{_datadir}/%{name}
