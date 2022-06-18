@@ -10,14 +10,17 @@ BuildRoot:  %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 BuildRequires:  waf
 BuildRequires:  desktop-file-utils
-BuildRequires:  flowcanvas-devel >= 0.5.1
-BuildRequires:  libglademm2.4-devel >= 2.6.0
-BuildRequires:  raul-devel >= 0.7.0
-BuildRequires:  jackit-devel >= 0.107.0
-BuildRequires:  libalsa-devel
-BuildRequires:  lash-devel
-BuildRequires:  dbus-glib-devel
+#BuildRequires:  flowcanvas-devel >= 0.5.1
+BuildRequires:  pkgconfig(libglademm-2.4) >= 2.6.0
+#BuildRequires:  raul-devel >= 0.7.0
+BuildRequires:  pkgconfig(jack) >= 0.107.0
+BuildRequires:  pkgconfig(alsa)
+BuildRequires:  pkgconfig(lash-1.0)
+BuildRequires:  pkgconfig(dbus-glib-1)
 BuildRequires:  boost-devel
+BuildRequires:  pkgconfig(dbus-1)
+BuildRequires:  pkgconfig(ganv-1)
+BuildRequires:  pkgconfig(fmt)
 
 %description
 Patchage is a modular patch bay for audio and MIDI systems based on
@@ -35,8 +38,7 @@ Jack, Lash, and Alsa.
     --libdir=%{_libdir} \
     --configdir=%{_sysconfdir} \
     --includedir=%{_includedir} \
-    --mandir=%{_mandir} \
-    --htmldir=%{_defaultdocdir}
+    --mandir=%{_mandir}
 
 ./waf build
 
@@ -44,16 +46,9 @@ Jack, Lash, and Alsa.
 rm -rf %{buildroot}
 ./waf install --destdir=%{buildroot}
 
-# fix desktop file
-sed -i -e 's:;Audio:;Audio;:' %{buildroot}%{_datadir}/applications/%{name}.desktop
-desktop-file-install    --remove-key=Encoding \
-            --remove-category=Application \
-            --dir %{buildroot}%{_datadir}/applications \
-            %{buildroot}%{_datadir}/applications/%{name}.desktop
-
 %files
 %defattr(-,root,root,-)
-%doc AUTHORS ChangeLog README
+%doc AUTHORS
 %{_mandir}/man1/%{name}.1.*
 %{_bindir}/%{name}
 %{_datadir}/%{name}
