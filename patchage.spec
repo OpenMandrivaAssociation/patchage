@@ -18,6 +18,7 @@ BuildRequires:  libalsa-devel
 BuildRequires:  lash-devel
 BuildRequires:  dbus-glib-devel
 BuildRequires:  boost-devel
+BuildRequires:  pkgconfig(ganv-1)
 
 %description
 Patchage is a modular patch bay for audio and MIDI systems based on
