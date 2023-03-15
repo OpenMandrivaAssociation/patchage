@@ -1,5 +1,5 @@
 Name:       patchage
-Version:    1.0.6
+Version:    1.0.10
 Release:    1
 Summary:    A modular patch bay for audio and MIDI systems
 License:    GPLv2+
