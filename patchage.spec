@@ -44,8 +44,10 @@ Jack, Lash, and Alsa.
 %{_bindir}/%{name}
 %{_datadir}/%{name}
 %{_datadir}/applications/%{name}.desktop
+%{_datadir}/locale/*/LC_MESSAGES/patchage.mo
 %{_iconsdir}/hicolor/*/apps/%{name}.png
 %{_iconsdir}/hicolor/scalable/apps/%{name}.svg
+%{_iconsdir}/hicolor/*x*/apps/patchage.svg
 
 
 %changelog
