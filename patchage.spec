@@ -8,7 +8,7 @@ Url:        http://drobilla.net/software/patchage/
 Source0:    http://download.drobilla.net/%{name}-%{version}.tar.bz2
 BuildRoot:  %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
-BuildRequires:  waf
+BuildRequires:  meson
 BuildRequires:  desktop-file-utils
 #BuildRequires:  flowcanvas-devel >= 0.5.1
 BuildRequires:  pkgconfig(libglademm-2.4) >= 2.6.0
@@ -30,21 +30,12 @@ Jack, Lash, and Alsa.
 %setup -q
 
 %build
-%setup_compile_flags
-./waf configure \
-    --prefix=%{_prefix} \
-    --bindir=%{_bindir} \
-    --datadir=%{_datadir} \
-    --libdir=%{_libdir} \
-    --configdir=%{_sysconfdir} \
-    --includedir=%{_includedir} \
-    --mandir=%{_mandir}
+%meson
 
-./waf build
+%meson_build
 
 %install
-rm -rf %{buildroot}
-./waf install --destdir=%{buildroot}
+%meson_install
 
 %files
 %defattr(-,root,root,-)
