@@ -4,7 +4,7 @@ Release:    1
 Summary:    A modular patch bay for audio and MIDI systems
 License:    GPLv2+
 Group:      Sound
-Url:        http://drobilla.net/software/patchage/
+Url:        https://drobilla.net/software/patchage/
 Source0:    http://download.drobilla.net/%{name}-%{version}.tar.bz2
 BuildRoot:  %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
