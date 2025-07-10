@@ -1,59 +1,53 @@
-Name:       patchage
-Version:    1.0.10
-Release:    1
-Summary:    A modular patch bay for audio and MIDI systems
-License:    GPLv2+
-Group:      Sound
-Url:        https://drobilla.net/software/patchage/
-Source0:    http://download.drobilla.net/%{name}-%{version}.tar.bz2
-BuildRoot:  %{_tmppath}/%{name}-%{version}-%{release}-buildroot
-
-BuildRequires:  meson
-BuildRequires:  desktop-file-utils
-#BuildRequires:  flowcanvas-devel >= 0.5.1
-BuildRequires:  pkgconfig(libglademm-2.4) >= 2.6.0
-#BuildRequires:  raul-devel >= 0.7.0
-BuildRequires:  pkgconfig(jack) >= 0.107.0
-BuildRequires:  pkgconfig(alsa)
-BuildRequires:  pkgconfig(lash-1.0)
-BuildRequires:  pkgconfig(dbus-glib-1)
-BuildRequires:  boost-devel
-BuildRequires:  pkgconfig(dbus-1)
-BuildRequires:  pkgconfig(ganv-1)
-BuildRequires:  pkgconfig(fmt)
+Summary:	A modular patch bay for audio and MIDI systems
+Name:	patchage
+Version: 	1.0.10
+Release:		2
+License:	GPLv3+
+Group:	Sound
+Url:	https://gitlab.com/drobilla/patchage
+Source0:	https://gitlab.com/drobilla/patchage/-/archive/v%{version}/%{name}-%{version}.tar.bz2
+BuildRequires:	desktop-file-utils
+BuildRequires:	meson
+BuildRequires:	boost-devel
+BuildRequires:	pkgconfig(alsa)
+BuildRequires:	pkgconfig(dbus-1)
+BuildRequires:	pkgconfig(dbus-glib-1)
+BuildRequires:	pkgconfig(fmt)
+BuildRequires:	pkgconfig(glibmm-2.4) >= 2.14.0
+BuildRequires:	pkgconfig(gtkmm-2.4) >= 2.12.0
+BuildRequires:	pkgconfig(ganv-1) >= 1.5.2
+BuildRequires:	pkgconfig(jack)
 
 %description
-Patchage is a modular patch bay for audio and MIDI systems based on
-Jack, Lash, and Alsa.
+This is a modular patch bay for audio and MIDI systems based on Jack and Alsa.
+
+%files
+%license COPYING
+%doc AUTHORS NEWS
+%{_mandir}/man1/%{name}.1.*
+%{_bindir}/%{name}
+%{_datadir}/%{name}
+%{_datadir}/applications/%{name}.desktop
+%{_iconsdir}/hicolor/*/apps/%{name}.png
+%{_iconsdir}/hicolor/scalable/apps/%{name}.svg
+%{_iconsdir}/hicolor/*x*/apps/%{name}.svg
+
+#-----------------------------------------------------------------------------
 
 %prep
-%setup -q
+%autosetup -p1
+
 
 %build
 %meson
 
 %meson_build
 
+
 %install
 %meson_install
 
-%files
-%defattr(-,root,root,-)
-%doc AUTHORS
-%{_mandir}/man1/%{name}.1.*
-%{_bindir}/%{name}
-%{_datadir}/%{name}
-%{_datadir}/applications/%{name}.desktop
-%{_datadir}/locale/*/LC_MESSAGES/patchage.mo
-%{_iconsdir}/hicolor/*/apps/%{name}.png
-%{_iconsdir}/hicolor/scalable/apps/%{name}.svg
-%{_iconsdir}/hicolor/*x*/apps/patchage.svg
-
-
-%changelog
-* Tue Jan 19 2010 Jérôme Brenier <incubusss@mandriva.org> 0.4.4-2mdv2010.1
-+ Revision: 493881
-- fix License tag
-- import patchage
-
-
+# Fix Exec line in the desktop file
+desktop-file-edit --set-key=Exec \
+								--set-value=%{name} \
+								%{buildroot}%{_datadir}/applications/%{name}.desktop
